@@ -1,0 +1,1 @@
+<?php	header('Content-Type: application/json');	include("conex.php");	$link=Conectarse();		$response = array();	$q_folio = "SELECT * FROM folios ";		$result_folio = mysql_query( $q_folio, $link) or die(mysql_error($link));		$response = mysql_fetch_assoc($result_folio);			print(json_encode($response));	?>

@@ -1,0 +1,74 @@
+.celda
+{
+	
+	border-style: solid;
+	border-width: 1px;
+	border-color: #E2D9D9;
+	padding: 6px 0 0 7px;
+	min-height: 31px;
+}
+.row.buscar DIV.col-xs-2
+{
+	padding-left: 7px;
+	padding-top: 4px;
+}
+.celda.doslin
+{
+	min-height: 52px;
+}
+.cuatrolin
+{
+	min-height: 98px;
+}
+.row.buscar
+{
+	color: #FFFFFF;
+	background: #969696;
+	padding: 6px 0;
+}
+#btn_buscar .fa-2x
+{
+	font-size: 20px;
+	color: #102BD2;
+}
+INPUT#tarjeta
+{
+	color: #1A35DD;
+	font: bold medium sans-serif;
+	text-align: center;
+	padding: 3px 0;
+}
+.col-xs-12.error
+{
+	color: #FFFFFF;
+	background: #F70000;
+	padding: 6px 0 8px;
+	text-align: center;
+	margin-top: 18px;
+	font-weight: bold;
+}
+.buscar .col-xs-2
+{
+	padding: 0;
+	margin: 0;
+}
+#result .container
+{
+	margin: 0 !important;
+	padding: 0;
+}
+#result DIV.col-xs-8
+{
+	margin: 0 !important;
+	padding: 0;
+}
+#result .container
+{
+	margin: 0 !important;
+	padding: 0;
+}
+.col-xs-4
+{
+	padding: 0 !important;
+	margin: 0 !important;
+}

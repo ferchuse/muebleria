@@ -1,0 +1,101 @@
+@media print {
+	.no_imprimir {
+		display: none;
+	}
+	.no_mostrar {
+		display: block;
+	}
+	.ticket {
+		font-size: 10px !important;
+		max-width : 8cm;
+	}
+	a[href]:after {
+		content:none;
+	}
+	a[href] {
+		content:none;
+	}
+}
+
+.row{
+	margin-bottom: 15px;
+}
+th{
+	text-align: center;
+	
+}
+#page-wrapper{
+	min-height:600px !important;
+	
+}
+.modal{
+	color: black;
+}
+#page-wrapper_nomenu {
+	min-height: 700px;
+	color: white;
+}
+.Cancelada {
+	background: #F4BAC0;
+}
+
+.no_mostrar {
+	display: none;
+}
+
+.badge-danger {
+  background-color: #d43f3a;
+}
+
+.badge-warning {
+background-color: #d58512;
+}
+
+.badge-success {
+background-color: #5cb85c !important;
+color : white  !important;
+}
+
+.badge-info {
+background-color: #269abc;
+}
+
+.badge-inverse {
+background-color: #333333;
+}
+
+
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+
+
+.ui-autocomplete-loading {
+	background: url('../img/ajax-loader.gif') no-repeat right center;
+}
+
+.vcenter {
+	display: inline-block;
+	vertical-align: middle;
+	float: none;
+}
+
+.table-center td {
+	text-align: center;
+}
+
+.ui-datepicker {
+	width: 15.2em;
+	padding: 0.2em 0.2em 0;
+	display: none;
+}
+
+select.ui-datepicker-month {
+	color: #101A26;
+}
+
+.ui-datepicker-year {
+	color: #000000;
+}

@@ -1,0 +1,23 @@
+@media print {
+	body{
+		
+		font-size: 12px !important;
+	}
+	.container{
+		
+		border-width : 2px;
+		border-style: solid;
+		border-color: black;
+		min-height: 100%;
+		height: 100vh;
+	}
+	table{
+		border:1px !important;
+		border-color: black !important;
+		font-size: 14px !important;
+	}
+	
+}
+
+
+

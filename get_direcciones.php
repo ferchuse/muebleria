@@ -1,0 +1,1 @@
+<?php	include ("conex.php");	$link = Conectarse();			$query = "SELECT direccion FROM ventas ORDER BY tarjeta";		$result = mysql_query($query,$link) or die("Error en: $query  ".mysql_error());		$tabla = array();	$fila = array();		while($row = mysql_fetch_assoc($result)){		$tabla[] = $row['direccion']  ;	}	echo json_encode($tabla);?>

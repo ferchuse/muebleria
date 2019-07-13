@@ -1,0 +1,95 @@
+
+
+
+.grid .barras{
+	margin: auto;
+    width: 100%;
+   
+} 
+
+.grid{
+	padding-top: .3cm;
+	text-align: center;
+	position: relative;
+	float: left;
+	width: 6.4cm;
+	height: 2.5cm;
+	border-style: solid ;
+	border-width: 0px ;
+	margin-bottom: 1px ;
+	background-color: #FFFFF;
+  /* text-align:center;
+
+Avery 5160
+Pres a ply 30600
+2.5cm * 6.7cm
+
+  */
+} 
+
+.center {
+    margin: auto;
+    width: 50%;
+    border: 3px solid green;
+    padding: 10px;
+}
+
+.codigo_texto{
+	text-align: center;
+	color: white;
+}
+
+.wrapper{
+   position: relative;
+   float: left;
+   width: 24cm;         
+   background-color: #FFFFF
+}
+
+
+@media screen{
+	
+	#btn_imprimir{
+		position: absolute;
+		right :10px;
+		
+	}
+	.buscar{
+		display:none;
+	}
+	.wrapper{
+		top: 50px;
+		left: 50px;
+	}
+	.btn_delete{
+		display: none;
+		position: absolute;
+		left: 45%;
+		bottom: 45%;
+	}
+	.grid:hover .btn_delete {
+		display: block;
+		
+	}
+	
+	
+	
+}
+@media print{
+	
+	.codigo_texto{
+		text-align: center;
+		color: black;
+	}
+	.wrapper{
+		border-style: none ;
+	  
+	  width: 19.5cm;
+	  padding-top: .2cm;
+	  padding-right: -.5cm;
+	}
+	.btn_delete{
+		display: none;
+		
+	}
+}

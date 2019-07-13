@@ -1,0 +1,52 @@
+
+
+body{
+	line-height: 1.1 !important;
+	font-size: 12px !important;
+}
+.doble_linea{
+	line-height: 1.8 !important;
+	font-size: 12px !important;
+}
+.borde{
+	
+	border-width : 2px;
+	border-style: solid;
+	border-color: black;
+	
+}
+.borde td{
+	
+	border-color: black !important;
+
+}
+
+.input_borde{
+	
+	border: 1px solid black !important; 
+	
+}
+#pagare{
+	
+	border-width : 1px;
+	border-style: solid;
+	border-color: black;
+	margin: 5px;
+	padding : 25px;
+}
+#pagare h3{
+	
+	font-weight: bold;
+	
+}
+.huella{
+	
+	border-width : 1px;
+	border-style: solid;
+	border-color: black;
+	min-height: 2.5cm;
+	margin: 5px;
+	padding : 5px;
+}
+
+

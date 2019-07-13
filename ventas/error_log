@@ -1,0 +1,14 @@
+[13-Dec-2016 10:43:37 America/Mexico_City] PHP Notice:  Undefined index: ventas in /home/syncsis/public_html/muebleria/ventas/sync_ventas.php on line 8
+[13-Dec-2016 10:43:37 America/Mexico_City] PHP Warning:  Invalid argument supplied for foreach() in /home/syncsis/public_html/muebleria/ventas/sync_ventas.php on line 13
+[13-Dec-2016 10:53:57 America/Mexico_City] PHP Notice:  Undefined index: ventas in /home/syncsis/public_html/muebleria/ventas/sync_ventas.php on line 8
+[13-Dec-2016 10:53:57 America/Mexico_City] PHP Warning:  Invalid argument supplied for foreach() in /home/syncsis/public_html/muebleria/ventas/sync_ventas.php on line 13
+[14-Dec-2016 12:21:20 America/Mexico_City] PHP Notice:  Undefined index: ventas in /home/syncsis/public_html/muebleria/ventas/sync_ventas.php on line 8
+[14-Dec-2016 12:21:20 America/Mexico_City] PHP Warning:  Invalid argument supplied for foreach() in /home/syncsis/public_html/muebleria/ventas/sync_ventas.php on line 13
+[20-Dec-2016 21:50:10 America/Mexico_City] PHP Notice:  Undefined index: ventas in /home/syncsis/public_html/muebleria/ventas/sync_ventas.php on line 8
+[20-Dec-2016 21:50:10 America/Mexico_City] PHP Warning:  Invalid argument supplied for foreach() in /home/syncsis/public_html/muebleria/ventas/sync_ventas.php on line 13
+[05-Jan-2017 12:00:16 America/Mexico_City] PHP Notice:  Undefined index: ventas in /home/syncsis/public_html/muebleria/ventas/sync_ventas.php on line 8
+[05-Jan-2017 12:00:16 America/Mexico_City] PHP Warning:  Invalid argument supplied for foreach() in /home/syncsis/public_html/muebleria/ventas/sync_ventas.php on line 13
+[27-Jan-2017 12:52:54 America/Mexico_City] PHP Notice:  Undefined index: ventas in /home/syncsis/public_html/muebleria/ventas/sync_ventas.php on line 8
+[27-Jan-2017 12:52:54 America/Mexico_City] PHP Warning:  Invalid argument supplied for foreach() in /home/syncsis/public_html/muebleria/ventas/sync_ventas.php on line 13
+[06-Mar-2017 14:14:52 America/Mexico_City] PHP Notice:  Undefined index: ventas in /home/syncsis/public_html/muebleria/ventas/sync_ventas.php on line 8
+[06-Mar-2017 14:14:52 America/Mexico_City] PHP Warning:  Invalid argument supplied for foreach() in /home/syncsis/public_html/muebleria/ventas/sync_ventas.php on line 13

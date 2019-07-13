@@ -1,0 +1,1 @@
+<?php	include ("conex.php");	$link = Conectarse();	$tabla= $_GET["tabla"];	$columna= $_GET["columna"];?><?php	//echo $parametro.",";	//echo $value;	$query ="SELECT nombre_producto FROM productos";		$result=mysql_query($query,$link) or die("Error en: $query  ".mysql_error());		while($row = mysql_fetch_assoc($result)){				echo $row["nombre_producto"], ",";	}	?>

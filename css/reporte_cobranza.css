@@ -1,0 +1,1 @@
+@media print{	.tabla_reporte{			font-size: 8px;	}	.tabla-lg{		font-size: 16px;	}	.tabla-md{		font-size: 11px !important; 	}	.tabla-sm{		font-size: 8px;	}	a[href]:after {		content:none;	}	a[href] {		content:none;	}	 } 

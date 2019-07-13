@@ -1,0 +1,119 @@
+div
+{
+	border: 1px solid rgba(0, 0, 0, 0);
+}
+#hoja_contrato
+{
+	background-image: url("../img/contrato.jpg ");
+	background-repeat: no-repeat;
+	background-size: 21.5cm 28cm;
+	margin-top: -0.4cm;
+	margin-left: -0.2cm;
+	min-height: 1064px;
+}
+#contenido_hoja
+{
+	margin-top: 4.8cm;
+	margin-left: 19px;
+	max-width: 20.6cm;
+}
+.fecha
+{
+	width: 1.8cm;
+	float: left;
+	text-align: center;
+}
+#fecha_evento
+{
+	position: relative;
+	float: left;
+	width: 5.5cm;
+	margin-left: 0.25cm;
+}
+#pedido
+{
+	position: relative;
+	margin-left: 11.2cm;
+	float: left;
+	text-align: center;
+	width: 3.5cm;
+}
+#encabezado
+{
+	margin-bottom: 0.3cm;
+	height: 0.6cm;
+}
+#datos_cliente
+{
+	padding-left: 2.5cm;
+	height: 1.8cm;
+}
+.telefono
+{
+	width: 7.8cm;
+	float: left;
+}
+#celular_cliente
+{
+	margin-left: 1.95cm;
+}
+#cuerpo
+{
+	margin-top: 0.75cm;
+	margin-left: 20px;
+	max-width: 20.5cm;
+}
+.cuerpo
+{
+	float: left;
+	height: 0.6cm;
+}
+#datos_cliente div
+{
+	padding-left: 0.3cm;
+}
+#cantidad
+{
+	text-align: center;
+	width: 1.5cm;
+	position: relative;
+}
+#descripcion
+{
+	text-align: left;
+	padding-left: 5px;
+	width: 14.5cm;
+	position: relative;
+}
+#unidad
+{
+	text-align: center;
+	width: 2cm;
+	position: relative;
+}
+#importe
+{
+	text-align: center;
+	width: 2.4cm;
+	position: relative;
+}
+#pie
+{
+	margin-top: 10.9cm;
+	margin-left: 17px;
+	width: 20.7cm;
+	height: 1.9cm;
+}
+#observaciones
+{
+	width: 15.7cm;
+	text-indent: 3cm;
+	float: left;
+}
+#pago
+{
+	width: 2.5cm;
+	float: left;
+	margin-left: 2.3cm;
+	text-align: center;
+}

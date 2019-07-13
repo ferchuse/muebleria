@@ -1,0 +1,15 @@
+@media print{
+	#ticket{
+		max-width: 8cm;
+	}
+}
+
+
+#ticket{
+	max-width: 8cm;
+}
+
+.ticket{
+	font-size: 10px !important;
+	max-width: 8cm;
+}

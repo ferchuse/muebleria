@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0 ">
+		<title>Buscar Tarjeta</title>
+		<link rel="stylesheet" type="text/css" href="css/movil.css" />		
+		<link rel="stylesheet" type="text/css" href="font_awesome/css/font-awesome.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+		
+		<link rel="stylesheet" type="text/css" href="css/redmond/jquery-ui-1.10.3.custom.min.css"  />
+		<link rel="stylesheet" type="text/css" href="css/alertify.css" />
+		
+		<script type="text/javascript" src="js/jquery-1.9.1.js" charset="utf8"></script>
+		<script type="text/javascript" src="js/jquery-ui-1.10.3.custom.min.js"></script>
+		<script type="text/javascript" src="js/alertify.min.js"></script>
+		<script type="text/javascript">
+			$( document ).ready(function() {
+				
+				
+				
+				$( "#txt_nombre_cliente" ).autocomplete({
+					source: "search_json.php?order=nombre_cliente&tabla=ventas&campo=nombre_cliente&valor=nombre_cliente&etiqueta=nombre_cliente",
+					minLength : 2,
+					select: function( event, ui ) {
+						
+						//$( "#txt_nombre_cliente" ).val(ui.item.value);
+						if(ui.item.extras.length > 1){
+							console.log("Hay mas de una tarjeta");
+						}
+						else{
+							$( "#tarjeta" ).val(ui.item.extras.tarjeta);
+							$("#btn_buscar").click();
+						}
+						
+						console.log(ui);
+						console.log(ui.item.extras);
+						
+						//alert(ui.item.tarjeta);
+						//$("#txt_cantidad").focus();
+						//$('#select_zona')..attr('selected','selected');( ui.item.zona );
+						
+					}
+				});
+				
+				function buscarTarjeta(){
+					
+					window.localStorage.ventas_db = window.AppInventor.getWebViewString();
+					
+				}
+				
+				$('#tarjeta').click(function(event){
+					$('#tarjeta').select();
+					
+				});
+				$('#txt_nombre_cliente').click(function(event){
+					$('#txt_nombre_cliente').select();
+					
+				});
+				
+				$('#form_tarjeta').submit(function(event){
+					console.log("buscarTarjeta")
+					//alert("Guardadno");
+					event.preventDefault();
+					
+					
+					if ($( "#tarjeta" ).val() != ""){
+						icono_carga = $('#form_tarjeta').find(".fa-search");
+						icono_carga.toggleClass("fa-search fa-spinner fa-spin");
+						$.get("result_movil.php",{"tarjeta" :$( "#tarjeta" ).val()},   function(data_return, status){
+							icono_carga.toggleClass("fa-search fa-spinner fa-spin");
+							//regresa todos los valores a 0
+							if(status =="success"){
+								cargarSaldoActual();
+								$('#result').html(data_return);
+								if(window.AppInventor){
+									//alert("tarjeta" + $( "#tarjeta" ).val());
+									window.AppInventor.setWebViewString($( "#tarjeta" ).val());
+									//alert("WBString " + window.AppInventor.getWebViewString());
+								}
+								}else{
+								alertify.error("No hay Internet. Vuelve a intentar");
+							}
+						});
+					}
+					else{
+						alertify.error("Ingrese una Tarjeta");
+						
+					}
+				}); 
+				
+			}); 
+			
+			function cargarSaldoActual(){
+				console.log("cargarSaldoActual()");
+				$.get("get_saldo_actual.php",  { "tarjeta":$("#tarjeta").val()  } , function(respuesta, status){
+					
+					if(status =="success"){
+						console.log(respuesta);
+						if(respuesta["existe"]){
+							
+							$("#saldo_actual").val(respuesta.datos_tarjeta.saldo_actual);	
+							
+							
+							cargarTablaAbonos();
+							
+						}
+						else{
+							alertify.error("Tarjeta No Encontrada");
+						}
+						
+					}
+				});	
+			}
+		
+			
+			
+			function cargarTablaAbonos(){
+				console.log("cargarTablaAbonos();");
+				
+				$( "#tabla_abonos").load("get_tabla_abonos.php", "tarjeta=" + $("#tarjeta").val()+"&saldo_inicial="+$("#saldo_inicial").val() , 
+				function(response, status) {
+					
+					$( ".borrar").click(function(event) {
+						if (confirm('¿Esta seguro que desea eliminar?')){
+							boton= $(this);
+							$.get('borrar.php', {
+								id: boton.attr("id")
+								}, function(data){	
+								//alert(data);
+								boton.closest("tr").fadeOut();
+								window.location.reload();
+							});
+						}
+						else{
+							return false;
+						}
+						return false; 
+					});
+					
+					$( ".editar_abono").click(function(event) {
+						id_abono = $(this).data("id_abono");
+						cargarAbono(id_abono);
+						
+						
+					});
+				}); 
+				
+			}
+		</script>
+	</head>
+	<body>
+		<div class="container-fluid">
+			<hr>
+			<div class="row ">
+				<div class="col-xs-12">
+					<form class="form form-horizontal" id="form_tarjeta">
+						<div class="form-group">
+							<label class="control-label col-xs-4" for="tarjeta">
+								Tarjeta:
+							</label>
+							<div class = "col-xs-8 ">
+								<div class = "input-group  ">
+									<input type="number" required name="tarjeta" class="form-control " id="tarjeta"  />	
+									<span class = "input-group-btn">
+										<button  id="btn_buscar" type="submit" class="btn btn-primary ">
+											<i class="fa fa-search "></i> 
+										</button>
+									</span>
+								</div><!-- /input-group -->
+							</div><!-- /input-group -->
+						</div ><!-- /form-group -->
+					</form>
+					
+					<form class="form form-horizontal">
+						<div class="form-group">
+							<label class="control-label col-xs-4" for="tarjeta">
+								Cliente:
+							</label>
+							<div class = "col-xs-8 ">
+								
+								<input type="text" class="form-control " id="txt_nombre_cliente"  >	
+								
+							</div><!-- /col-xs-8 -->
+						</div ><!-- /form-group -->
+					</form>
+					
+					<div id="result" >
+						<div class="row" >
+							<div class="col-xs-4 ">
+								<div class="celda" >
+									NV
+								</div>
+								<div class="celda" >
+									Tarjeta
+								</div>
+								<div class="celda doslin">
+									Fecha de Venta
+								</div>
+								<div class="celda doslin">
+									Fecha de Vencimiento
+								</div>
+								<div class="celda doslin">
+									Nombre Cliente
+								</div>
+								<div class="celda cuatrolin">
+									Dirección
+								</div>
+								<div class="celda doslin">
+									Referencias
+								</div>
+								<div class="celda doslin">
+									Entre Calles
+								</div>
+								<div class="celda">
+									Teléfono
+								</div>
+								<div class="celda">
+									Dia de Cobro
+								</div>
+								<div class="celda">
+									Cobrador
+								</div>
+								
+								<div class="celda doslin">
+									Clave Vendedor
+								</div>
+								<div class="celda">
+									Sector
+								</div>
+								<div class="celda doslin">
+									Articulo
+								</div>
+								<div class="celda">
+									Importe Total
+								</div>
+							</div >
+							<div class="col-xs-8">
+								<div  class="celda">
+									<?php echo $nv;?>
+								</div>
+								<div  class="celda">
+									<?php echo $tarjeta;?>
+								</div>
+								<div  class="celda doslin">
+									<?php echo $fecha_venta;?>
+								</div>
+								<div class="celda doslin">
+									<?php echo $fecha_vencimiento;?>
+								</div>
+								<div class="celda doslin ">
+									<?php echo $nombre_cliente;?>
+								</div>
+								<div class="celda cuatrolin">
+									<?php echo $direccion;?>
+								</div>
+								<div class="celda doslin">
+									<?php echo $referencias;?>
+								</div>
+								<div class="celda doslin">
+									<?php echo $entre_calles;?>
+								</div>
+								<div class="celda">
+									<a href="tel: + 52 <?php echo $telefono;?>"> <?php echo $telefono;?></a>
+								</div>
+								<div class="celda">
+									<?php echo $dia_cobranza;?>
+								</div>
+								<div class="celda">
+									<?php echo $cobrador;?>
+								</div>
+								<div class="celda doslin">
+									<?php echo $clave_vendedor;?>
+								</div>
+								<div class="celda">
+									<?php echo $sector;?>
+								</div>
+								<div class="celda doslin">
+									<?php echo $articulo;?>
+								</div>
+								<div class="celda ">
+									<?php echo $importe;?>
+								</div>
+							</div><!-- /col-xs-8 -->
+						</div >  <!-- /row-->
+						<hr>
+						
+						<div class="panel panel-primary ">
+							<div class="panel-heading">Abonos</div>
+							<div class="panel-body">
+								<div class="table-responsive" id="tabla_abonos">
+									
+								</div> <!-- /table-responsive -->
+							</div><!-- /panel-body -->
+						</div><!-- /panel -->
+						
+						<hr>
+						
+						
+						<div class="panel panel-primary ">
+							<div class="panel-heading">Incidencias</div>
+							<div class="table-responsive">
+								<table class="table table-condensed table-bordered">
+									<thead>
+										<th>FECHA</th>
+										<th>HORA</th>
+										<th>INCIDENCIA</th>
+										<th>COMENTARIO</th>
+										<th>COBRADOR</th>
+									</thead>
+									
+									<tbody>
+										<tr>
+											<td>
+												<?php echo $dias[$dia_numerico], " ", $fecha_inc ;?>
+											</td>
+											<td>
+												<?php echo $hora_inc;?>
+											</td>
+											<td>
+												<?php echo $tipo_inc;?>
+											</td>
+											<td>
+												<?php echo $comentario;?>
+											</td>
+											<td>
+												<?php echo $cobrador;?>
+											</td>
+										</tr> 
+									</tbody>
+								</table>
+							</div> <!-- /table-responsive -->
+						</div><!-- /panel -->
+					</div >  <!-- /result-->
+				</div><!-- /col-xs-12 -->
+			</div><!-- /row -->
+		</div><!-- /container-fluid -->
+	</body>
+</html>

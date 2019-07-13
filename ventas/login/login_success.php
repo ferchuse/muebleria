@@ -1,0 +1,1 @@
+<?php session_start();$url = "location:login/main_login.php";		 //"?redirect_url=".$_SERVER['PHP_SELF'];if (isset($_SESSION['usuario'])) {}else{	header($url);} ?>

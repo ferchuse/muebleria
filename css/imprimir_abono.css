@@ -1,0 +1,16 @@
+@media print{
+	.fila_ticket div{
+		 display: block !important;
+		 width: 100% !important;
+	}
+	.ticket58 {
+		max-width: 45mm; 
+		padding-left: 3mm;
+		padding-right: 2mm;
+		font-size: 10px;
+		}
+	.ticket58 .titulo{
+	
+		font-size: 12px;
+	}
+}

@@ -1,0 +1,37 @@
+@media print
+{
+	#div_etiqueta1
+	{
+		page-break-after: always !important;
+	}
+}
+#div_etiqueta1
+{
+	display: block !important;
+	position: relative !important;
+}
+.etiqueta
+{
+	font-size: 15px;
+	margin: 12px 0 18px 17px;
+	padding: 0;
+}
+.logo_etiqueta
+{
+	position: relative;
+	top: -108px;
+	left: 346px;
+	height: 0px;
+}
+@media print
+{
+	BODY
+	{
+		background: #FFFFFF;
+	}
+	.contenido
+	{
+		padding: 0;
+		background: #FFFFFF;
+	}
+}

@@ -1,0 +1,1 @@
+<?php	include ("login/login_success.php");?><!DOCTYPE html> <html lang="es"><head>	<title>Inicio</title>	<meta charset="utf-8" />		<?php include("styles.php");?></head><body>	<?php		include("header.php");	?>	<?php include("scripts.php");?></body></html>

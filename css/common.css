@@ -1,0 +1,144 @@
+@media print {
+	.no_imprimir {
+		display: none;
+	}
+	.no_mostrar {
+		display: block;
+	}
+	.ticket {
+		font-size: 10px !important;
+		max-width : 8cm;
+	}
+	.ticket58 {
+		font-size: 10px !important;
+		max-width : 57mm;
+		padding-right: 5mm;
+	}
+	a[href]:after {
+		content:none;
+	}
+	a[href] {
+		content:none;
+		}
+	table{
+		border:1px !important;
+		border-color: black !important;
+		font-size: 8px !important;
+	}
+	
+	.tabla3{
+		border: 1px !important;
+		border-color: black !important;
+		font-size: 12px !important;
+	}
+	.tabla2{
+		border: 1px !important;
+		border-color: black !important;
+		font-size: 10px !important;
+	}
+	.tabla_grande{
+		border: 1px !important;
+		border-color: black !important;
+		font-size: 16px !important;
+	}
+  .page-break{
+			page-break-before: always;}
+
+  .full-table{
+			width: 100%;
+	}
+		
+	#talonario{
+			width: 20cm;
+	}
+ a[href]:after {
+    content: none !important;
+  }
+}
+
+
+.mobile-search{
+	
+	padding-top: 9px;
+}
+
+canvas{
+	
+	background-color: white !important;
+}
+
+
+th {
+	text-align: center !important;
+}
+
+.fila_roja {
+	background: #F4BAC0 !important;
+}
+.texto_rojo {
+	color: red !important;
+}
+.Cancelada {
+	background: #F4BAC0;
+}
+
+.no_mostrar {
+	display: none;
+}
+
+.badge-danger {
+  background-color: #d43f3a;
+}
+
+.badge-warning {
+background-color: #d58512;
+}
+
+.badge-success {
+background-color: #5cb85c !important;
+color : white  !important;
+}
+
+.badge-info {
+background-color: #269abc;
+}
+
+.badge-inverse {
+background-color: #333333;
+}
+
+
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+
+
+.ui-autocomplete-loading {
+	background: url('../img/ajax-loader.gif') no-repeat right center;
+}
+
+.vcenter {
+	display: inline-block;
+	vertical-align: middle;
+	float: none;
+}
+
+.table-center td {
+	text-align: center;
+}
+
+.ui-datepicker {
+	width: 15.2em;
+	padding: 0.2em 0.2em 0;
+	display: none;
+}
+
+select.ui-datepicker-month {
+	color: #101A26;
+}
+
+.ui-datepicker-year {
+	color: #000000;
+}
