@@ -75,9 +75,9 @@
 							<option value="">Elige un Estatus	</option>
 							<?php 
 								$q_estatus = "SELECT * FROM estatus ";
-								$result_estatus=mysql_query($q_estatus,$link) or die("Error en: $q_estatus  ".mysql_error());
+								$result_estatus=mysqli_query($link, $q_estatus) or die("Error en: $q_estatus  ".mysqli_error($link));
 								
-								while($row = mysql_fetch_assoc($result_estatus)){
+								while($row = mysqli_fetch_assoc($result_estatus)){
 									$id_estatus_db = $row["id_estatus"];
 									$estatus_db = $row["estatus"];
 									
