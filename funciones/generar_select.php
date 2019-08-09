@@ -4,8 +4,8 @@
 	
 	// $link = Conectarse();
 	 
-	function generar_select($link, $tabla, $llave_primaria, $campo_etiqueta ,$filtro = false, $disabled = false ,$required = false , $id_selected = 0, $data_indice = 0, $name = "", $id = ''){
-		$consulta = "SELECT * FROM $tabla WHERE $tabla.id_administrador = {$_SESSION["id_administrador"]}";
+	function generar_select($link, $tabla, $llave_primaria, $campo_etiqueta ,$filtro = false, $disabled = false ,$required = false , $id_selected = 0, $data_indice = 0, $name = "", $id = '', $filtros){
+		$consulta = "SELECT * FROM $tabla WHERE {$filtros[0]['name']} = '{$filtros[0]['value']}'";
 		
 		if($name == ""){
 			$name = $llave_primaria;
@@ -31,7 +31,7 @@
 		
 		while($fila = mysqli_fetch_assoc($result)){
 			$select.="<option value='".$fila[$llave_primaria]."'";
-			$select.=$fila[$llave_primaria] == $id_selected ? " selected" : "" ;
+			// $select.=$fila[$llave_primaria] == $id_selected ? " selected" : "" ;
 			$select.=" >".$fila[$campo_etiqueta] ."</option>";
 			
 		}

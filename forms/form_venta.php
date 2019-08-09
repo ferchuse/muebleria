@@ -34,6 +34,20 @@
 						<input type="text" required class="form-control" name="articulo" id="articulo" />
 					</div>
 					<div class="form-group">
+						<label for="fecha_abono">Tipo de Articulo:</label>
+						<select id="tipo_articulo" name="tipo_articulo" class="form-control">
+							<option value="">Elige</option>
+							<option value="Caja">Caja</option>
+							<option value="Mueble">Mueble</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="fecha_abono">Cobrador:</label>
+						
+						<?php echo generar_select($link, "cobradores", "nombre_cobrador","nombre_cobrador", false, false, false,0,0,"cobrador","cobrador", array(0=>array("name"=> "activo", "value"=>"1"))) ?>
+						
+					</div>
+					<div class="form-group">
 						<label for="fecha_abono">Importe:</label>
 						<input type="number" required class="form-control" name="importe" id="importe" />
 					</div>

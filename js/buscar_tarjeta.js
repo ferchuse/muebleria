@@ -302,7 +302,7 @@ $( document ).ready(function() {
 			"data": {
 				"tarjeta":  $("#tarjeta").val(),
 				"comentario":  $("#comentario_inc").val(),
-				"cobrador":  $("#cobrador").val()
+				"cobrador":  $("#text_cobrador").val()
 				
 			}
 			}).done(function(respuesta, status){
