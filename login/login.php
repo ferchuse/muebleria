@@ -41,9 +41,11 @@
 		setcookie("sesion", "si", 0, "/");
 		setcookie("id_usuario", $id_usuario,  0, "/");
 		setcookie("usuario", $myusername,  0, "/");
+		setcookie("id_turnos", $_POST["turno"],  0, "/");
+		setcookie("efectivo_inicial", $_POST["efectivo_inicial"],  0, "/");
 		
 		$response["login"] = "valid";
-		
+		$response["actualiza_efectivo"] = actualizaEfectivo($link, $_POST["turno"], $_POST["efectivo_inicial"]);
 		
 	}
 	else{
@@ -52,5 +54,30 @@
 		
 	}
 	
+	
+	
+	function actualizaEfectivo($link, $turno, $efectivo_inicial){
+		
+		$consulta = "UPDATE turnos SET efectivo_inicial ='$efectivo_inicial' WHERE id_turnos = '$turno'";
+		
+		if(mysqli_query($link, $consulta)){
+			return array(
+			"estatus" => "success", 
+			"consulta" => $consulta
+			);
+		}
+		else{
+			return array(
+			"estatus" => "error", 
+			"mensaje" => mysqli_error($link), 
+			"consulta" => $consulta
+			);
+		}
+		
+	}
+	
 	echo json_encode($response);
+	
+	
+	
 ?>

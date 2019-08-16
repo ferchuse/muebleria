@@ -1,11 +1,15 @@
 $(document).ready(function(){
-		
-	$("#form_login").submit(function(event){
-		event.preventDefault();
-		
-		$("#btn_login").prop("disabled", true);
-		$("#spinner").toggleClass("hide");
-		$.ajax(
+	ultimoTurno();
+	
+	$("#form_login").submit(iniciarSesion );
+});
+
+function iniciarSesion(event){
+	event.preventDefault();
+	
+	$("#btn_login").prop("disabled", true);
+	$("#spinner").toggleClass("hide");
+	$.ajax(
 		{
 			"url": "login.php", 
 			"method": "POST", 
@@ -17,6 +21,7 @@ $(document).ready(function(){
 				
 				if(response.login == "valid"){
 					alertify.success("Acceso Correcto");
+					// return;
 					if($("#redirect_url").val() != ''){
 						console.log("Redirigiendo a " +  $("#redirect_url").val() )
 						location.replace( "../.." +$("#redirect_url").val());
@@ -42,5 +47,22 @@ $(document).ready(function(){
 			}
 		});
 		
+}
+function ultimoTurno(){
+	
+	$.ajax({
+		"url": "ultimo_turno.php"
+		}).done(function(respuesta){
+		if(respuesta.pedir_efectivo == 1){	
+			$("#efectivo_inicial").prop("readonly", false);
+		}
+		else{
+			$("#efectivo_inicial").prop("readonly", true);
+			$("#efectivo_inicial").val(respuesta.efectivo_inicial);
+		}
+		
+		$("#turno").val(respuesta.ultimo_turno);
+		
 	});
-});
+	
+}
