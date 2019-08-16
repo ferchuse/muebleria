@@ -30,6 +30,9 @@
 		
 		$consulta_totales = "SELECT * FROM
 		
+		(SELECT SUM(abono) AS suma_abonos
+		FROM ingresos WHERE  DATE(fecha_hora_abonos) = '$fecha_corte' AS tabla_abonos,
+		
 		(SELECT SUM(cantidad_ingresos) AS entradas FROM ingresos WHERE estatus_ingresos='ACTIVO') AS tabla_entradas,
 		(SELECT SUM(cantidad_egresos) AS salidas FROM egresos WHERE estatus_egresos='ACTIVO') AS tabla_salidas
 		";
@@ -251,7 +254,7 @@
 									<div class="col-xs-7">Abonos</div>
 									<div class="text-success col-xs-1 text-center">+</div>
 									<div class="text-success col-xs-1 text-center">$</div>
-									<div class="cantidad text-success col-xs-3 text-right"><?php echo number_format($total_efectivo,2) ?></div>
+									<div class="cantidad text-success col-xs-3 text-right"><?php echo number_format($suma_abonos,2) ?></div>
 								</div>
 								
 								<div class="row no-gutters">
