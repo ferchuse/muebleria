@@ -165,14 +165,14 @@ function checkAll(){
 
 
 function cargarTabla(filtros){
-	// console.log("filtros");
+	console.log("cargarTabla");
 	// console.log(filtros);
-	$("#spinner").show();
+	$("#cargador").removeClass("hidden");
 	$("#tbody").load("productos/lista_productos.php", 
 		$("#form_filtros").serialize(),
 		function(response){
 			
-			$("#spinner").hide();
+			$("#cargador").addClass("hidden");
 			
 			$("#check_all").change(checkAll);
 			$(".seleccionar").change(contarSeleccionados)

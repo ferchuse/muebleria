@@ -29,7 +29,7 @@
 			<div class="row" >
 				<div class="col-md-2 etiqueta">
 					<h4>
-						Lista de Artículos <i id="spinner" class='fa fa-spinner fa-spin '></i>
+						Lista de Artículos <i id="cargador" class="fa fa-spinner fa-spin hidden"></i>
 					</h4>
 				</div>
 				<div class="col-md-1">
@@ -62,7 +62,7 @@
 							<label for="id_almacen">
 								Existencia: 
 							</label>
-							<select class="form-control" name="existencia" id="existencia">
+							<select class="form-control" name="existencia" >
 								<option value="">Elige...</option>
 								<option value=">0">Mayor a 0</option>
 							</select>
