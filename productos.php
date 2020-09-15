@@ -85,9 +85,12 @@
 					</form>
 					
 				</div>
-				<div class="col-md-1  ">
-					<button type="button" class="btn btn-default pull-right btn_exportar" >
-						<i class="fa fa-arrow-right"></i> Exportar a Excel
+				<div class="col-md-2  ">
+					<button type="submit" class="btn btn-sm btn-info pull-right " form="form_seleccionados" >
+						<i class="fa fa-print"></i> Imprimir
+					</button> 
+					<button type="button" class="btn btn-sm btn-default pull-right btn_exportar" >
+					<i class="fa fa-arrow-right"></i> Exportar
 					</button> 
 				</div>
 				<div class="col-md-4 hide ">
@@ -106,8 +109,8 @@
 			</div>
 			<hr> 
 			
-			<form target="_blank" action="unidades/imprimir_qr.php" id="form_seleccionados">
-				<input  type="" id="seleccionados" name="num_eco" >
+			<form target="_blank" action="productos/imprimir_producto.php" id="form_seleccionados">
+				<input  type="" id="seleccionados" name="codigos" >
 			</form>
 			<div class="row" >
 				<div class="col-md-12">
