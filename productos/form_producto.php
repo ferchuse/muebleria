@@ -60,7 +60,7 @@
 			
 			<div class="form-group">
 				<label class="control-label" for="">Existencia:</label>  
-				<input id="existencia" name="existencia" class="form-control" type="number" value="20">
+				<input id="existencia" name="existencia" class="form-control" type="number" >
 			</div>
 			<div class="form-group">
 				

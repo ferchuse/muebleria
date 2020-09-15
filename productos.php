@@ -113,7 +113,7 @@
 				<input  type="hidden" id="seleccionados" name="codigos" >
 			</form>
 			<div class="row" >
-				<div class="col-md-12">
+				<div class="col-md-12 table-responsive" >
 					<table id="tabla_reporte" class="table table-condensed table-hover table-bordered" data-modal="#modal_nuevo_articulo" data-form="#form_nuevo_articulo" data-tabla="<?php echo $table_name ?>" data-id_field="<?php echo $id_field; ?>" >
 						<!-- Tabla de Articulos-->
 						<thead>
