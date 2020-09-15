@@ -70,6 +70,7 @@ or die("Error al ejecutar $query_med: $query_med".mysqli_error($link));
 		?>
 			
 			<tr class="<?php echo $semaforo;?>">
+				<td ><input value="<?php echo $id_articulo;?>" class="seleccionar"  type="checkbox"></td>
 				<td ><?php echo  $id_articulo; ?></td>
 				<td ><?php echo $descripcion; ?></td>
 				<td><?php echo $categoria;?></td>	
