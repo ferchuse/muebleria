@@ -5,9 +5,9 @@ $link=Conectarse();
 $query_med = "SELECT * 
  FROM productos 
 LEFT JOIN productos_categorias USING (id_categoria)
-LEFT JOIN almacen_existencias USING (id_articulo)
-LEFT JOIN almacenes USING (id_almacen)
-
+#LEFT JOIN almacen_existencias USING (id_articulo)
+#LEFT JOIN almacenes USING (id_almacen)
+WHERE 1
 ";
 
 if(isset($_POST["campo_filtro"])){
@@ -16,24 +16,29 @@ if(isset($_POST["campo_filtro"])){
 	$valor_filtro = $_POST["valor_filtro"];
 	$query_med.= " WHERE $campo_filtro LIKE '%$valor_filtro%' ";
 }
-if(isset($_POST["id_almacen"])){
-	if($_POST["id_almacen"] != "TODOS"){
-		if(isset($_POST["campo_filtro"])){
-			$query_med.= " AND id_almacen = ".$_POST["id_almacen"];
-		}else{
-			$query_med.= " WHERE id_almacen = ".$_POST["id_almacen"];
-		}
-	}
+if($_GET["id_categoria"] != "" ){
+	
+	
+	$query_med.= " AND id_categoria = '{$_GET["id_categoria"]}' ";
 }
+// if(isset($_POST["id_almacen"])){
+	// if($_POST["id_almacen"] != "TODOS"){
+		// if(isset($_POST["campo_filtro"])){
+			// $query_med.= " AND id_almacen = ".$_POST["id_almacen"];
+		// }else{
+			// $query_med.= " WHERE id_almacen = ".$_POST["id_almacen"];
+		// }
+	// }
+// }
 
 
-if(isset($_POST["order_field"])){
-	$query_med.= " ORDER BY ".$_POST["order_field"]. $_POST["order"] ;
+if(isset($_GET["order_field"])){
+	$query_med.= " ORDER BY ".$_GET["order_field"]. $_GET["order"] ;
 }else{
 	$query_med.= " ORDER BY Descripcion ASC";
 }
 
-if(isset($_POST["pagina_actual"])){
+if(isset($_GET["pagina_actual"])){
 	
 }
 
@@ -58,14 +63,14 @@ or die("Error al ejecutar $query_med: $query_med".mysqli_error($link));
 			
 			extract($fila); // convierte en variables los elementos del Array $fila, en este caso los nombres de cada campo 
 			
-			if($existencia <= $Min   ){
+			// if($existencia <= $Min   ){
 				
-				$semaforo = "danger";
-			}
-			else{
-				$semaforo = " ";
+				// $semaforo = "danger";
+			// }
+			// else{
+				// $semaforo = " ";
 				
-			}
+			// }
 			
 		?>
 			
@@ -74,7 +79,7 @@ or die("Error al ejecutar $query_med: $query_med".mysqli_error($link));
 				<td ><?php echo  $id_articulo; ?></td>
 				<td ><?php echo $descripcion; ?></td>
 				<td><?php echo $categoria;?></td>	
-				<td><?php echo $costo_compra;?></td>	
+				<td><?php echo number_format($costo_compra);?></td>	
 				<?php
 					
 						$q_precios = "SELECT * FROM productos_precios WHERE id_articulo = '$id_articulo'";
@@ -87,12 +92,12 @@ or die("Error al ejecutar $query_med: $query_med".mysqli_error($link));
 								if($fila_precios["activo"] == 1){
 								?>
 								
-								<td><?php echo number_format($fila_precios["precio"]);?></td>
+								<td class="text-right"><?php echo number_format($fila_precios["precio"]);?></td>
 			
 							<?php
 								}
 								else{ ?>
-									<td>NA</td>
+									<td>-</td>
 			
 									<?php	
 								}
@@ -105,7 +110,7 @@ or die("Error al ejecutar $query_med: $query_med".mysqli_error($link));
 				?>
 				
 				
-				<td><?php echo number_format($existencia_total);?></td>
+				<td><?php echo number_format($existencia);?></td>
 			
 				<td>
 					<button  type="button"  class="btn btn-danger btn-sm borrar_fila pull-right"  data-id_value="<?php echo $id_articulo;?>" >

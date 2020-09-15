@@ -63,7 +63,7 @@
 		WHERE id_articulo = '".$_POST["id_articulo"]."'
 		";
 		
-		$respuesta["cosnsulta"] = $insertar ;
+		$respuesta["consulta"] = $insertar ;
 		
 		if(mysqli_query($link, $insertar)){
 			$respuesta["estatus_update"]= "success";

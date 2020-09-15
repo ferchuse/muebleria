@@ -29,7 +29,7 @@
 			<div class="row" >
 				<div class="col-md-2 etiqueta">
 					<h4>
-						Lista de Artículos
+						Lista de Artículos <i id="spinner" class='fa fa-spinner fa-spin '></i>
 					</h4>
 				</div>
 				<div class="col-md-1">
@@ -38,8 +38,8 @@
 					</button>
 				</div>
 				<div class="col-md-7 ">
-					<form class="form-inline">
-						<div class="form-group">
+					<form class="form-inline" id="form_filtros">
+						<div class="form-group hidden">
 							<label class="etiqueta" for="id_almacen">
 								Almacén: 
 							</label>
@@ -58,7 +58,7 @@
 								?>
 							</select>
 						</div>
-						<div class="form-group etiqueta">
+						<div class="form-group etiqueta hidden">
 							<label for="id_almacen">
 								Existencia: 
 							</label>
@@ -110,7 +110,7 @@
 			<hr> 
 			
 			<form target="_blank" action="productos/imprimir_producto.php" id="form_seleccionados">
-				<input  type="" id="seleccionados" name="codigos" >
+				<input  type="hidden" id="seleccionados" name="codigos" >
 			</form>
 			<div class="row" >
 				<div class="col-md-12">

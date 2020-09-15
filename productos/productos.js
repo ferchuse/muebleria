@@ -20,7 +20,16 @@ $( document ).ready(function() {
 	});
 	
 	$("#form_nuevo_articulo").submit( guardarProducto);
-			
+	$("#form_filtros").submit( function(event){
+		event.preventDefault();
+		cargarTabla(filtros);
+	});
+	
+	$("#form_filtros select").change(function(){
+		
+		cargarTabla(filtros);
+	});
+	
 	
 	$(".btn_toggle").click( toggleButton);
 	
@@ -156,12 +165,14 @@ function checkAll(){
 
 
 function cargarTabla(filtros){
-	console.log("filtros");
-	console.log(filtros);
-	$("#tbody").html("<td colspan='8'><div class='text-center'><i class='fa fa-4x fa-spinner fa-spin '></i></div></td>");
+	// console.log("filtros");
+	// console.log(filtros);
+	$("#spinner").show();
 	$("#tbody").load("productos/lista_productos.php", 
-		filtros,
+		$("#form_filtros").serialize(),
 		function(response){
+			
+			$("#spinner").hide();
 			
 			$("#check_all").change(checkAll);
 			$(".seleccionar").change(contarSeleccionados)
@@ -208,7 +219,7 @@ function guardarProducto(event){
 	
 	
 	$.ajax({
-	"url" : "productos/guardar_producto.php",
+		"url" : "productos/guardar_producto.php",
 		"method": "POST",
 		"data": $form.serialize()
 	})
