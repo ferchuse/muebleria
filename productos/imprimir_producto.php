@@ -67,7 +67,7 @@
 						}
 						
 					?>
-					<div class="col-sm-3 mb-2 border">
+					<div class="col-sm-4 mb-2 border">
 					
 						<img class="img-fluid" src="<?= $producto["url_foto"] == "" ? "default.jpg" : $producto["url_foto"]?>">
 						Clave: <?= $producto["id_articulo"]?> <br>
