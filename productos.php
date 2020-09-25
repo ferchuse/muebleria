@@ -124,7 +124,7 @@
 								<th>Categoria</th>
 								<th>Costo Compra</th>
 								<?php
-									$q_precios = "SELECT * FROM tipo_precio";
+									$q_precios = "SELECT * FROM tipo_precio ORDER BY orden";
 									
 									$result_precios = mysqli_query($link, $q_precios) or die(mysqli_error($link));
 									
