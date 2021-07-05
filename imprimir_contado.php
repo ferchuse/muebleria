@@ -2,46 +2,48 @@
 	include "login/login_success.php";
 	include("conexi.php");
 	$link = Conectarse();
+	
+	$tarjeta = $_GET["tarjeta"];
 	$q_tarjeta = "SELECT * , 
-			suma_importe - suma_enganche - IF(ISNULL(total_abonado), 0, total_abonado) AS saldo_calculado
-			FROM ventas 
-			
-			LEFT JOIN 
-			(
-			SELECT
-			tarjeta,
-			IF(ISNULL(SUM(abono)), 0 ,SUM(abono))   AS total_abonado
-			FROM
-			abonos
-			WHERE
-			tarjeta = '$tarjeta'
-			) as t_abonado
-			USING(tarjeta)
-			
-			LEFT JOIN 
-			estatus
-			USING(id_estatus)
-			
-			LEFT JOIN 
-			(
-			SELECT
-			tarjeta,
-			SUM(importe) AS suma_importe,
-			SUM(enganche) AS suma_enganche
-			FROM
-			ventas
-			WHERE
-			tarjeta = '$tarjeta'
-			) as t_importe
-			USING(tarjeta)
-			WHERE tarjeta = '{$_GET["tarjeta"]}'";
+	suma_importe - suma_enganche - IF(ISNULL(total_abonado), 0, total_abonado) AS saldo_calculado
+	FROM ventas 
+	
+	LEFT JOIN 
+	(
+	SELECT
+	tarjeta,
+	IF(ISNULL(SUM(abono)), 0 ,SUM(abono))   AS total_abonado
+	FROM
+	abonos
+	WHERE
+	tarjeta = '$tarjeta'
+	) as t_abonado
+	USING(tarjeta)
+	
+	LEFT JOIN 
+	estatus
+	USING(id_estatus)
+	
+	LEFT JOIN 
+	(
+	SELECT
+	tarjeta,
+	SUM(importe) AS suma_importe,
+	SUM(enganche) AS suma_enganche
+	FROM
+	ventas
+	WHERE
+	tarjeta = '$tarjeta'
+	) as t_importe
+	USING(tarjeta)
+	WHERE tarjeta = '{$_GET["tarjeta"]}'";
 	$result = mysqli_query($link, $q_tarjeta);
 	
 	$venta = Array();
 	while($fila = mysqli_fetch_assoc($result)){
 		$venta = $fila;	
 	}
-	?>
+?>
 
 
 <div class="ticket58">
@@ -57,7 +59,7 @@
 			HILARIO ROBERTO LAGUNA LÓPEZ RFC LALH640228EK7 CURP LALH640228HMCGPL02 
 			Régimen de Incorporación Fiscal<br>
 			VENTA DE ARTICULOS PARA EL HOGAR  <br>
-		
+			
 			AV 16 DE SEPTIEMBRE S/N SAN SEBASTIÁN, ZUMPANGO ESTADO DE MEXICO , <BR>
 			Tel: (01591) 9185428 <BR>
 			Esta nota de venta forma parte de la factura global del dia.
@@ -65,10 +67,10 @@
 	</div>
 	
 	COPIA CLIENTE 	<span id="tarjeta" class="lead pull-right">
-			N°:	<?php echo $venta["nv"]?>
-		</span>
-		<br>
-		<br>
+		N°:	<?php echo $venta["nv"]?>
+	</span>
+	<br>
+	<br>
 	
 	-----------------------------------
 	<div class="fila_ticket">
@@ -76,7 +78,7 @@
 			<strong>Tipo de Venta: </strong>
 		</span>
 		<span id="tarjeta" class="">
-				<?php echo $venta["tipo_venta"]?>
+			<?php echo $venta["tipo_venta"]?>
 		</span>
 	</div>
 	
