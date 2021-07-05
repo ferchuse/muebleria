@@ -1,7 +1,39 @@
 <?php 
 	include("conexi.php");
 	$link = Conectarse();
-	$q_tarjeta = "SELECT * FROM ventas LEFT JOIN vendedores USING(clave_vendedor) WHERE tarjeta = '".	$_GET["tarjeta"]."'";
+	$q_tarjeta = "SELECT * , 
+			suma_importe - suma_enganche - IF(ISNULL(total_abonado), 0, total_abonado) AS saldo_calculado
+			FROM ventas 
+			
+			LEFT JOIN 
+			(
+			SELECT
+			tarjeta,
+			IF(ISNULL(SUM(abono)), 0 ,SUM(abono))   AS total_abonado
+			FROM
+			abonos
+			WHERE
+			tarjeta = '$tarjeta'
+			) as t_abonado
+			USING(tarjeta)
+			
+			LEFT JOIN 
+			estatus
+			USING(id_estatus)
+			
+			LEFT JOIN 
+			(
+			SELECT
+			tarjeta,
+			SUM(importe) AS suma_importe,
+			SUM(enganche) AS suma_enganche
+			FROM
+			ventas
+			WHERE
+			tarjeta = '$tarjeta'
+			) as t_importe
+			USING(tarjeta)
+			WHERE tarjeta = '{$_GET["tarjeta"]}'";
 	$result = mysqli_query($link, $q_tarjeta);
 	
 	$venta = Array();
@@ -134,7 +166,7 @@
 			<strong>Por Cobrar: </strong>
 		</span>
 		<span id="span_restante" class="pull-right">
-			$<?php echo number_format($venta["saldo_actual"])?>
+			$<?php echo number_format($venta["saldo_calculado"])?>
 		</span>
 	</div>
 	<div class="fila_ticket">
