@@ -1,4 +1,5 @@
 <?php 
+	include "login/login_success.php";
 	include("conexi.php");
 	$link = Conectarse();
 	$q_tarjeta = "SELECT * , 
